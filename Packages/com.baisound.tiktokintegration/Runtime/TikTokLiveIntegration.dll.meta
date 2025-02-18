@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 07d22d43217407b4c9023a653a0f4db3
+PluginImporter:
+  serializedVersion: 2
+  iconMap: {}
+  executionOrder: {}
+  defineConstraints: []
+  platformData:
+    Any:
+      enabled: 1
+    Editor:
+      enabled: 1
+    Standalone:
+      enabled: 1
+  isPreloaded: 0
+  isOverridable: 1
+  validateReferences: 1
+  

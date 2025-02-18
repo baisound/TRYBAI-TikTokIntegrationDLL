@@ -1,0 +1,40 @@
+既存のUnity6のバージョンのプロジェクトを普通にまずは起動
+
+Sceneを適切に保存しておく
+
+Package ManegerにてGit URLからのパッケージ追加でURL以下を追加
+https://github.com/frankvHoof93/TikTokLiveSharp.git
+
+プロジェクトを一旦停止
+
+プロジェクト直下に
+
+Packagesフォルダをコピー＆ペースト
+Assetsフォルダをコピー＆ペースト
+
+
+config.json の中身を適切に置き換え
+
+ギフトIDについて
+5655：バラ
+6064：GG
+8286：GG
+
+Library以下を削除して
+プロジェクトを起動
+
+Sceneが削除されていると思うので、AssetのScenesフォルダにある保存しているSceneをファイルメニューから開きなおしてください。
+
+Window>General>Consoleで何もエラーが発生していなければ導入完了です。
+
+Assets/Scripts/GameManegerが全てを制御するファイルです。中身を理解してください。
+分からなければChatGPTに何をしてるのか1行毎にコメント書いてもらってください。
+
+GameObjectをGameManeger分とTikTokIntegration分作ってください。
+GameManegerはAdd ComponentでScriptを挿入
+TikTokIntegrationはAdd ComponentでPackageフォルダのCom.Baisound.TikTokIntegrationがスクリプトとして選択できるはずです。
+
+最期に左上メニューの編集からProject Settings＞Script Execution Orderと選択してもらってスクリプト実行に優先順位が設定できるのでGameManegerよりも先にTikTokIntegrationが実行されるように設定ください。
+
+
+

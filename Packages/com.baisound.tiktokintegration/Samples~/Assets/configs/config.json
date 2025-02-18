@@ -1,0 +1,23 @@
+{ 
+  "TikTokUser": "試験したい配信者さんのTikTokId", 
+  "BearerToken": "ご自身のトークンキー", 
+  "RestApiEndpoint": "http://52.195.57.50/api/v1/tiktok/gift/regist", 
+  "LicenseKey": "ご自身のライセンスキー", 
+  "ContentsId": "TEST_baisound_unity", 
+ 
+  // ギフトIDごとのコマンド定義例 
+  "GiftActions": { 
+    "5655": { 
+      "Command": "PowerUpPlayer", 
+      "Parameters": { "duration": 0.02 } 
+    }, 
+    "6064": { 
+      "Command": "PowerUpPlayer", 
+      "Parameters": { "duration": 10 } 
+    },
+    "8286": { 
+      "Command": "PowerUpPlayer", 
+      "Parameters": { "duration": 10 } 
+    }
+  } 
+} 
