@@ -1,0 +1,154 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>TikTokLiveIntegration</name>
+    </assembly>
+    <members>
+        <member name="T:Com.Baisound.TikTokIntegration.TikTokIntegration">
+            <summary>
+            TikTok のライブ配信と連携し、ギフトの受信を管理するクラス。
+            </summary>
+        </member>
+        <member name="T:Com.Baisound.TikTokIntegration.TikTokIntegration.GiftReceivedDelegate">
+            <summary>
+            ギフト受信イベントのデリゲート定義
+            </summary>
+            <param name="gift">受信したギフト情報</param>
+        </member>
+        <member name="E:Com.Baisound.TikTokIntegration.TikTokIntegration.OnGiftReceived">
+            <summary>
+            ギフト受信イベント
+            </summary>
+        </member>
+        <member name="F:Com.Baisound.TikTokIntegration.TikTokIntegration.lastRepeatCountByGroup">
+            <summary>
+            ギフトの連続送信状態を保持する辞書
+            </summary>
+        </member>
+        <member name="F:Com.Baisound.TikTokIntegration.TikTokIntegration.configFilePath">
+            <summary>
+            設定ファイルのパス
+            </summary>
+        </member>
+        <member name="T:Com.Baisound.TikTokIntegration.TikTokIntegration.GiftAction">
+            <summary>
+            TikTok のギフト情報を格納するクラス
+            </summary>
+        </member>
+        <member name="F:Com.Baisound.TikTokIntegration.TikTokIntegration.GiftAction.GiftId">
+            <summary> ギフトのID </summary>
+        </member>
+        <member name="F:Com.Baisound.TikTokIntegration.TikTokIntegration.GiftAction.GiftName">
+            <summary> ギフトの名前 </summary>
+        </member>
+        <member name="F:Com.Baisound.TikTokIntegration.TikTokIntegration.GiftAction.Count">
+            <summary> ギフトの数量 </summary>
+        </member>
+        <member name="F:Com.Baisound.TikTokIntegration.TikTokIntegration.GiftAction.Sender">
+            <summary> ギフトを送ったユーザー名 </summary>
+        </member>
+        <member name="F:Com.Baisound.TikTokIntegration.TikTokIntegration.GiftAction.Command">
+            <summary>
+            ギフトに対応するコマンド
+            </summary>
+        </member>
+        <member name="F:Com.Baisound.TikTokIntegration.TikTokIntegration.GiftAction.Parameters">
+            <summary>
+            ギフトに対応するコマンドパラメータ
+            </summary>
+        </member>
+        <member name="M:Com.Baisound.TikTokIntegration.TikTokIntegration.GiftAction.#ctor">
+            <summary>
+            ギフトアクションのコンストラクタ
+            </summary>
+        </member>
+        <member name="M:Com.Baisound.TikTokIntegration.TikTokIntegration.HandleTikTokGiftReceived(System.Int32,System.String,System.Int32,System.String)">
+            <summary>
+            ギフトを受信した際に処理するメソッド
+            </summary>
+            <param name="giftId">ギフトのID</param>
+            <param name="giftName">ギフトの名前</param>
+            <param name="count">ギフトの数量</param>
+            <param name="senderName">ギフトを送信したユーザー名</param>
+        </member>
+        <member name="M:Com.Baisound.TikTokIntegration.TikTokIntegration.Awake">
+            <summary>
+            初期設定の読み込み
+            </summary>
+        </member>
+        <member name="M:Com.Baisound.TikTokIntegration.TikTokIntegration.Start">
+            <summary>
+            TikTok ライブ配信のリスニングを開始
+            </summary>
+        </member>
+        <member name="F:Com.Baisound.TikTokIntegration.TikTokIntegration.giftActionMap">
+            <summary>
+            設定ファイルを読み込み、GiftActionsを辞書として保持
+            </summary>
+        </member>
+        <member name="M:Com.Baisound.TikTokIntegration.TikTokIntegration.LoadConfig">
+            <summary>
+            設定ファイルを読み込み、TikTok のユーザー設定を初期化する。
+            </summary>
+        </member>
+        <member name="M:Com.Baisound.TikTokIntegration.TikTokIntegration.GetGiftAction(System.Int32)">
+            <summary>
+            ギフトIDに対応するアクションを取得
+            </summary>
+        </member>
+        <member name="M:Com.Baisound.TikTokIntegration.TikTokIntegration.ReloadConfig">
+            <summary>
+            設定ファイルを再読み込みする
+            </summary>
+        </member>
+        <member name="M:Com.Baisound.TikTokIntegration.TikTokIntegration.ConvertGiftMessageToGiftAction(TikTokLiveSharp.Events.GiftMessage)">
+            <summary>
+            `GiftMessage` を `GiftAction` に変換するヘルパーメソッド
+            </summary>
+        </member>
+        <member name="M:Com.Baisound.TikTokIntegration.TikTokIntegration.HandleGift(TikTokLiveSharp.Events.GiftMessage)">
+            <summary>
+            受信したギフトの処理を行う
+            </summary>
+            <param name="giftMessage">TikTokLiveSharp から受信したギフトメッセージ</param>
+        </member>
+        <member name="T:Com.Baisound.TikTokIntegration.ApiClient">
+            <summary>
+            TikTok の API と通信を行うクライアント
+            </summary>
+        </member>
+        <member name="M:Com.Baisound.TikTokIntegration.ApiClient.ValidateLicense(System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            ライセンスを検証し、結果をログに記録する
+            </summary>
+        </member>
+        <member name="M:Com.Baisound.TikTokIntegration.ApiClient.PostGiftInfo(System.String,System.String,TikTokLiveSharp.Events.GiftMessage,System.String,System.String)">
+            <summary>
+            ギフト情報を POST で送信する 
+            </summary>
+        </member>
+        <member name="T:Com.Baisound.TikTokIntegration.TikTokIntegrationConfig">
+            <summary>
+            TikTok の設定情報を保持するクラス
+            </summary>
+        </member>
+        <member name="F:Com.Baisound.TikTokIntegration.TikTokIntegrationConfig.TikTokUser">
+            <summary> TikTok のユーザーID </summary>
+        </member>
+        <member name="F:Com.Baisound.TikTokIntegration.TikTokIntegrationConfig.BearerToken">
+            <summary> API 呼び出しに必要な Bearer トークン </summary>
+        </member>
+        <member name="F:Com.Baisound.TikTokIntegration.TikTokIntegrationConfig.RestApiEndpoint">
+            <summary> API エンドポイントの URL </summary>
+        </member>
+        <member name="F:Com.Baisound.TikTokIntegration.TikTokIntegrationConfig.LicenseKey">
+            <summary> 認証用のライセンスキー </summary>
+        </member>
+        <member name="F:Com.Baisound.TikTokIntegration.TikTokIntegrationConfig.ContentsId">
+            <summary> コンテンツ ID </summary>
+        </member>
+        <member name="F:Com.Baisound.TikTokIntegration.TikTokIntegrationConfig.GiftActions">
+            <summary> ギフト情報の辞書 </summary>
+        </member>
+    </members>
+</doc>

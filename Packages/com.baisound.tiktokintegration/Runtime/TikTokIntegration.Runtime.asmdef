@@ -1,0 +1,14 @@
+{
+    "name": "Com.Baisound.TikTokIntegration",
+    "rootNamespace": "Com.Baisound.TikTokIntegration",
+    "references": [],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": [
+        "TikTokLiveIntegration.dll"
+    ],
+    "autoReferenced": true,
+    "noEngineReferences": false
+}
