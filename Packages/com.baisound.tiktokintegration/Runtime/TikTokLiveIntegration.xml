@@ -9,6 +9,36 @@
             TikTok のライブ配信と連携し、ギフトの受信を管理するクラス。
             </summary>
         </member>
+        <member name="F:Com.Baisound.TikTokIntegration.TikTokIntegration.client">
+            <summary>
+            TikTok のライブ配信クライアント
+            </summary>
+        </member>
+        <member name="F:Com.Baisound.TikTokIntegration.TikTokIntegration.currentRoomInfo">
+            <summary>
+            現在のルーム情報
+            </summary>
+        </member>
+        <member name="F:Com.Baisound.TikTokIntegration.TikTokIntegration.lastGiftMessage">
+            <summary>
+            最後に受信したギフトの記録（オプション）    
+            </summary>
+        </member>
+        <member name="F:Com.Baisound.TikTokIntegration.TikTokIntegration.apiClient">
+            <summary>
+            API クライアント
+            </summary>
+        </member>
+        <member name="F:Com.Baisound.TikTokIntegration.TikTokIntegration.config">
+            <summary>
+            TikTok のライブ配信クライアント
+            </summary>
+        </member>
+        <member name="P:Com.Baisound.TikTokIntegration.TikTokIntegration.Instance">
+            <summary>
+            TikTok のライブ配信クライアント
+            </summary>
+        </member>
         <member name="T:Com.Baisound.TikTokIntegration.TikTokIntegration.GiftReceivedDelegate">
             <summary>
             ギフト受信イベントのデリゲート定義
@@ -22,12 +52,22 @@
         </member>
         <member name="F:Com.Baisound.TikTokIntegration.TikTokIntegration.lastRepeatCountByGroup">
             <summary>
-            ギフトの連続送信状態を保持する辞書
+            ギフトコンボの状態を管理する辞書
             </summary>
         </member>
         <member name="F:Com.Baisound.TikTokIntegration.TikTokIntegration.configFilePath">
             <summary>
             設定ファイルのパス
+            </summary>
+        </member>
+        <member name="F:Com.Baisound.TikTokIntegration.TikTokIntegration._roomInfo">
+            <summary>
+            ルーム情報を格納する JSON オブジェクト
+            </summary>
+        </member>
+        <member name="F:Com.Baisound.TikTokIntegration.TikTokIntegration.isLicenseValid">
+            <summary>
+            ルーム情報を取得するプロパティ
             </summary>
         </member>
         <member name="T:Com.Baisound.TikTokIntegration.TikTokIntegration.GiftAction">
@@ -76,6 +116,11 @@
             初期設定の読み込み
             </summary>
         </member>
+        <member name="M:Com.Baisound.TikTokIntegration.TikTokIntegration.SetLicenseValid(System.Boolean)">
+            <summary>
+            ValidateLicense の結果を設定するためのアクセサ
+            </summary>
+        </member>
         <member name="M:Com.Baisound.TikTokIntegration.TikTokIntegration.Start">
             <summary>
             TikTok ライブ配信のリスニングを開始
@@ -85,6 +130,12 @@
             <summary>
             設定ファイルを読み込み、GiftActionsを辞書として保持
             </summary>
+        </member>
+        <member name="M:Com.Baisound.TikTokIntegration.TikTokIntegration.FetchAndStoreRoomInfo">
+            <summary>
+            ルーム情報を取得して保存する
+            </summary>
+            <returns></returns>
         </member>
         <member name="M:Com.Baisound.TikTokIntegration.TikTokIntegration.LoadConfig">
             <summary>
@@ -106,11 +157,12 @@
             `GiftMessage` を `GiftAction` に変換するヘルパーメソッド
             </summary>
         </member>
-        <member name="M:Com.Baisound.TikTokIntegration.TikTokIntegration.HandleGift(TikTokLiveSharp.Events.GiftMessage)">
+        <member name="M:Com.Baisound.TikTokIntegration.TikTokIntegration.BuildEndpointUrl(System.String)">
             <summary>
-            受信したギフトの処理を行う
+            エンドポイント URL を組み立てる
             </summary>
-            <param name="giftMessage">TikTokLiveSharp から受信したギフトメッセージ</param>
+            <param name="endpointSuffix"></param>
+            <returns></returns>
         </member>
         <member name="T:Com.Baisound.TikTokIntegration.ApiClient">
             <summary>
@@ -119,13 +171,32 @@
         </member>
         <member name="M:Com.Baisound.TikTokIntegration.ApiClient.ValidateLicense(System.String,System.String,System.String,System.String,System.String)">
             <summary>
-            ライセンスを検証し、結果をログに記録する
+            ライセンスを検証
             </summary>
         </member>
-        <member name="M:Com.Baisound.TikTokIntegration.ApiClient.PostGiftInfo(System.String,System.String,TikTokLiveSharp.Events.GiftMessage,System.String,System.String)">
+        <member name="M:Com.Baisound.TikTokIntegration.ApiClient.PostGiftInfo(System.String,System.String,TikTokLiveSharp.Events.GiftMessage,System.String,System.String,Newtonsoft.Json.Linq.JObject)">
             <summary>
-            ギフト情報を POST で送信する 
+            ギフト情報を送信
             </summary>
+            <param name="endpoint"></param>
+            <param name="bearerToken"></param>
+            <param name="gift"></param>
+            <param name="licenseKey"></param>
+            <param name="contentsId"></param>
+            <param name="currentRoomInfo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Com.Baisound.TikTokIntegration.ApiClient.SendPostRequest(System.String,System.String,System.String,System.Action{System.String})">
+            <summary>
+            共通の POST リクエスト処理（デバッグ出力付き）
+            </summary>
+            <summary>
+            共通の POST リクエスト処理（responseCallback が指定されていればレスポンス解析を任せる）
+            </summary>
+            <param name="endpoint">リクエスト先の URL</param>
+            <param name="bearerToken">Bearer トークン</param>
+            <param name="jsonPayload">送信する JSON ペイロード</param>
+            <param name="responseCallback">レスポンステキストを受け取るコールバック（任意）</param>
         </member>
         <member name="T:Com.Baisound.TikTokIntegration.TikTokIntegrationConfig">
             <summary>
@@ -134,6 +205,9 @@
         </member>
         <member name="F:Com.Baisound.TikTokIntegration.TikTokIntegrationConfig.TikTokUser">
             <summary> TikTok のユーザーID </summary>
+        </member>
+        <member name="F:Com.Baisound.TikTokIntegration.TikTokIntegrationConfig.MyTikTokUser">
+            <summary> ライセンス認証用のユーザーID </summary>
         </member>
         <member name="F:Com.Baisound.TikTokIntegration.TikTokIntegrationConfig.BearerToken">
             <summary> API 呼び出しに必要な Bearer トークン </summary>
