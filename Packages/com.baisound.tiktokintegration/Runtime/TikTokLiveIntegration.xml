@@ -70,6 +70,16 @@
             ルーム情報を取得するプロパティ
             </summary>
         </member>
+        <member name="F:Com.Baisound.TikTokIntegration.TikTokIntegration.configPath">
+            <summary>
+            ライセンス認証の結果を取得するプロパティ
+            </summary>
+        </member>
+        <member name="E:Com.Baisound.TikTokIntegration.TikTokIntegration.OnConnected">
+            <summary>
+            OnConnected イベント
+            </summary>
+        </member>
         <member name="T:Com.Baisound.TikTokIntegration.TikTokIntegration.GiftAction">
             <summary>
             TikTok のギフト情報を格納するクラス
@@ -138,6 +148,11 @@
             <returns></returns>
         </member>
         <member name="M:Com.Baisound.TikTokIntegration.TikTokIntegration.LoadConfig">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Com.Baisound.TikTokIntegration.TikTokIntegration.LoadConfigCoroutine">
             <summary>
             設定ファイルを読み込み、TikTok のユーザー設定を初期化する。
             </summary>
